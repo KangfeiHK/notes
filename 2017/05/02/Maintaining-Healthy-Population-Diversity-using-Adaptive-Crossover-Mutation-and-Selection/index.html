@@ -1,0 +1,798 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/notes/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/notes/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/notes/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="TEC," />
+
+
+
+
+
+  <link rel="alternate" href="/notes/atom.xml" title="Kang CS" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/notes/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="如何保持遗传算法运行过程中 exploration and exploitation 的平衡是该领域内大部分文章主要的工作之一，下面介绍一篇 2011 年发表在 TEC 上的文章。 这篇文章的作者来自于 National University of Ireland （爱尔兰国立大学戈尔韦）的 Bio-Inspired and Reconfigurable Computing 研究组。目前在 Nat">
+<meta name="keywords" content="TEC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maintaining Healthy Population Diversity using Adaptive Crossover, Mutation and Selection - 2011 - TEC">
+<meta property="og:url" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/index.html">
+<meta property="og:site_name" content="Kang CS">
+<meta property="og:description" content="如何保持遗传算法运行过程中 exploration and exploitation 的平衡是该领域内大部分文章主要的工作之一，下面介绍一篇 2011 年发表在 TEC 上的文章。 这篇文章的作者来自于 National University of Ireland （爱尔兰国立大学戈尔韦）的 Bio-Inspired and Reconfigurable Computing 研究组。目前在 Nat">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_01.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_02.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_03.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_04.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_05.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_06.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_07.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_08.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_09.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_10.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_11.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_12.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_13.png">
+<meta property="og:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_14.png">
+<meta property="og:updated_time" content="2017-05-03T08:02:53.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maintaining Healthy Population Diversity using Adaptive Crossover, Mutation and Selection - 2011 - TEC">
+<meta name="twitter:description" content="如何保持遗传算法运行过程中 exploration and exploitation 的平衡是该领域内大部分文章主要的工作之一，下面介绍一篇 2011 年发表在 TEC 上的文章。 这篇文章的作者来自于 National University of Ireland （爱尔兰国立大学戈尔韦）的 Bio-Inspired and Reconfigurable Computing 研究组。目前在 Nat">
+<meta name="twitter:image" content="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/notes/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/"/>
+
+
+
+
+
+  <title>Maintaining Healthy Population Diversity using Adaptive Crossover, Mutation and Selection - 2011 - TEC | Kang CS</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/notes/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kang CS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Algorithms Resources</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/notes/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/notes/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/notes/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/notes/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kangfeihk.com/notes/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://kangfeihk.com/img/avatar-KF.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kang CS">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Maintaining Healthy Population Diversity using Adaptive Crossover, Mutation and Selection - 2011 - TEC
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T13:59:06+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>如何保持遗传算法运行过程中 exploration and exploitation 的平衡是该领域内大部分文章主要的工作之一，下面介绍一篇 2011 年发表在 TEC 上的文章。</p>
+<p>这篇文章的作者来自于 National University of Ireland （爱尔兰国立大学戈尔韦）的 Bio-Inspired and Reconfigurable Computing 研究组。目前在 National University of Ireland 担任 Post-Doctoral Researcher，研究方向之一包括启发式算法，在这篇文章之前，曾在 GECCO 2008 发表过<strong> <a href="https://dl.acm.org/citation.cfm?doid=1389095.1389311" target="_blank" rel="external">Maintaining diversity through adaptive selection, crossover and mutation</a></strong>。</p>
+<p>文章提出了一种新方法（ACROMUSE），能够自适应调节交叉率、变异率和选择压三个参数之间的关系。在调节之前，方法引入了两种指标，Standard Population Diversity (SPD) 用来描述种群解空间的多样性，Healthy Population Diversity (HPD) 是从适应度的角度描述种群解空间的多样性。</p>
+<p>主张：</p>
+<p>本文提出的方法的核心目标不仅仅在于维持个体在种群解空间中的多样性，而且还要使得高适应度值的个体的多样性。</p>
+<p>文中有提到关于传统遗传算法容易陷入局部最优解的原因：</p>
+<p>在进化的中后期，几乎每次选中的优秀个体都是重复的，并且这些个体相似度很高，从而使得交叉后仍然得到相似的个体，变异（后期往往倾向于选择较小的变异率）也无法破坏当前稳定的状态。若是全局最优在局部最优边上，则通过上述方式有可能找到全局最优，但是事实上这种情况并不常见，特别是在复杂的实际问题中，因此种群有较大的概率陷入局部最优解中。</p>
+<h3 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h3><h4 id="计算-SPD"><a href="#计算-SPD" class="headerlink" title="计算 SPD"></a>计算 SPD</h4><p>记种群为 G，种群规模为 P，每个个体含有 N 位基因。$G_i$ ($G_1$ - $G_p$) 代表的是第 i 个个体，$G_i,n$ 代表的是第 i 个个体的第 n 个基因值。$G^{ave}$ 是指所有个体的所有基因位之和，$G^{ave}_n$ 是指种群中所有个体上 n 位上的基因的平均和，公式如下：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_01.png" alt="formu_01.png" title="">
+<p>$SPD_i$ 表示第i 个个体对种群多样性的贡献，可通过计算与 $G^{ave}$ 之间的欧式距离求出。</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_02.png" alt="formu_02.png" title="">
+<p>简单 $SPD_i$ 的求和一定程度上也可以用于描述 SPD，但是本文中没有使用，因为这样求得的结果 SPD 无法 $G^{ave}$ 根据归一化，导致不同问题求得的 SPD 值不具备可比性。为了克服这个问题，作者通过计算标准差来求得归一化的 SPD， 标准差 $\sigma(G^{ave}_n)$ 计算方式如下：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_03.png" alt="formu_03.png" title="">
+<p>因此，SPD 可由以下公式计算：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_04.png" alt="formu_04.png" title="">
+<h4 id="计算-HPD"><a href="#计算-HPD" class="headerlink" title="计算 HPD"></a>计算 HPD</h4><p>HPD 与 SPD 不同的地方在于前者同时加入了适应度值的衡量。 SPD 仅仅考虑解空间（solution space，注意区别 fitness landscape，fitness landscape 可以看成是 solution space 的映射），HPD 同时考虑了 solution space 和 fitness landscape。</p>
+<p>加权的平均基因值计算公式如下：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_05.png" alt="formu_05.png" title="">
+<p>$HPD_i$ 代表个体 i 对于种群健康度的贡献，因此当个体 i 的适应度值小或者靠近平均个体时，其 $HPD_i$ 的值都是较小的。计算公式如下：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_06.png" alt="formu_06.png" title="">
+<p>同样为了计算得到归一化后的 HPD值，需要先计算标准差：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_07.png" alt="formu_07.png" title="">
+<p>最终，利用上述计算结果，可根据下式求出 HPD 的值；</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_08.png" alt="formu_08.png" title="">
+<h3 id="如何使用-SPD-和-HPD"><a href="#如何使用-SPD-和-HPD" class="headerlink" title="如何使用 SPD 和 HPD"></a>如何使用 SPD 和 HPD</h3><img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_09.png" alt="formu_09.png" title="">
+<p><strong>自适应控制交叉率</strong></p>
+<ul>
+<li>Exploitation section（使用交叉和较小的变异率）</li>
+<li>Exploration section（自适应控制变异率） </li>
+</ul>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_10.png" alt="formu_10.png" title="">
+<p><strong>自适应控制变异率</strong></p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_11.png" alt="formu_11.png" title="">
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_12.png" alt="formu_12.png" title="">
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_13.png" alt="formu_13.png" title="">
+<p><strong>自适应控制选择</strong></p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_14.png" alt="formu_14.png" title="">
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>作者从以下六个方面总结了本篇文章的贡献：</p>
+<ol>
+<li>引入 HPD 指标，额外提供一种评估种群多样性的方式，此外还发现适应度空间变化后，HPD 成负相关变化，SPD 几乎无直接联系。</li>
+<li>利用 HPD 提出了自适应控制的选择算子，当 HPD 指标值较高时，增加 tourment size, 以增大选择压；相反，在指标值较小时，减小 tourment size 使得削弱选择压，增大基因/个体的多样性。</li>
+<li>在选中的 tourment size 个个体中，不是通过比较各自适应度值大小，选出最优个体，而是通过比较 HPD 指标（同时考虑适应度值和种群多样性）。</li>
+<li>自适应交叉算子，即在 exploration 中，变异操作探索算子，不采用交叉操作。在 exploitation 中，采用交叉操作以及较小的变异率（此时变异充当布局搜索作用）。当多样性指标 SPD 值较小时，增大 exploration 在种群中的比例；反之， SPD 较大时，增大 exploitation 在种群中的比例。</li>
+<li>通过结合自适应地交叉、变异和选择，提出了一种新的自适应遗传算法，旨在保持种群中健康个体的多样性，这样的种群十分适合处理环境动态变化的问题（更接近现实生活）。</li>
+<li></li>
+</ol>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>其它常用的 种群多样性衡量指标有：</p>
+<h3 id="待解决问题"><a href="#待解决问题" class="headerlink" title="待解决问题"></a>待解决问题</h3><p>$$\sum_{i=1}^PG_i,n$$</p>
+<p>$$G^{ave}_n = \frac{1}{P}$$</p>
+<p>上述公式无法连接成一行，因此上文中部分采用图片外链的方式。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/notes/tags/TEC/" rel="tag"># TEC</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/notes/2017/05/02/genetic-algorithm/" rel="next" title="Genetic Algorithm">
+                <i class="fa fa-chevron-left"></i> Genetic Algorithm
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/notes/2017/05/02/LaTeX-Quick-Notes/" rel="prev" title="LaTeX Quick Notes">
+                LaTeX Quick Notes <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://kangfeihk.com/img/avatar-KF.jpg"
+               alt="Kang" />
+          <p class="site-author-name" itemprop="name">Kang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/notes/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/notes/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/notes/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心"><span class="nav-number">1.</span> <span class="nav-text">算法核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算-SPD"><span class="nav-number">1.1.</span> <span class="nav-text">计算 SPD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算-HPD"><span class="nav-number">1.2.</span> <span class="nav-text">计算 HPD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用-SPD-和-HPD"><span class="nav-number">2.</span> <span class="nav-text">如何使用 SPD 和 HPD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number"></span> <span class="nav-text">结论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">1.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待解决问题"><span class="nav-number">2.</span> <span class="nav-text">待解决问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/notes/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/notes/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/notes/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/notes/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/notes/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/notes/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/notes/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/notes/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/notes/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/notes/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/notes/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

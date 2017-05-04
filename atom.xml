@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Kang CS</title>
+  <subtitle>Algorithms Resources</subtitle>
+  <link href="/notes/atom.xml" rel="self"/>
+  
+  <link href="http://kangfeihk.com/notes/"/>
+  <updated>2017-05-04T05:07:51.498Z</updated>
+  <id>http://kangfeihk.com/notes/</id>
+  
+  <author>
+    <name>Kang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>No Free Lunch Theorems for Search</title>
+    <link href="http://kangfeihk.com/notes/2017/05/04/No-Free-Lunch-Theorems-for-Search/"/>
+    <id>http://kangfeihk.com/notes/2017/05/04/No-Free-Lunch-Theorems-for-Search/</id>
+    <published>2017-05-04T05:06:05.000Z</published>
+    <updated>2017-05-04T05:07:51.498Z</updated>
+    
+    <content type="html"><![CDATA[<p>The No Free Lunch Theorem states that “any two algorithms are equivalent when their performance is averaged across all possible problems”. This means that the goal of this research cannot be to implement a GA that will outperform other algorithms in all cases. </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The No Free Lunch Theorem states that “any two algorithms are equivalent when their performance is averaged across all possible problems”
+    
+    </summary>
+    
+    
+      <category term="TEC" scheme="http://kangfeihk.com/notes/tags/TEC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LaTeX Quick Notes</title>
+    <link href="http://kangfeihk.com/notes/2017/05/02/LaTeX-Quick-Notes/"/>
+    <id>http://kangfeihk.com/notes/2017/05/02/LaTeX-Quick-Notes/</id>
+    <published>2017-05-02T15:18:14.000Z</published>
+    <updated>2017-05-02T15:34:24.594Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于网站中需要经常插入公式，LaTeX 还是不错的选择，目前初学琢磨中，下面是一些常用的资源网站：</p>
+<ul>
+<li><a href="https://cn.sharelatex.com/learn/Learn_LaTeX_in_30_minutes" target="_blank" rel="external">Learn LaTeX in 30 minutes</a></li>
+<li><a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" target="_blank" rel="external">LaTeX/Mathematics wikibooks</a></li>
+<li><a href="http://www.mohu.org/info/lshort-cn.pdf" target="_blank" rel="external">一份不太简短的 LATEX2e 介绍</a></li>
+<li><a href="http://mohu.org/info/symbols/symbols.htm" target="_blank" rel="external">常用数学符号的 LaTeX 表示方法</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于网站中需要经常插入公式，LaTeX 还是不错的选择，目前初学琢磨中，下面是一些常用的资源网站：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://cn.sharelatex.com/learn/Learn_LaTeX_in_30_minutes&quot; target
+    
+    </summary>
+    
+    
+      <category term="LaTeX" scheme="http://kangfeihk.com/notes/tags/LaTeX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maintaining Healthy Population Diversity using Adaptive Crossover, Mutation and Selection - 2011 - TEC</title>
+    <link href="http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/"/>
+    <id>http://kangfeihk.com/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/</id>
+    <published>2017-05-02T05:59:06.000Z</published>
+    <updated>2017-05-03T08:02:53.085Z</updated>
+    
+    <content type="html"><![CDATA[<p>如何保持遗传算法运行过程中 exploration and exploitation 的平衡是该领域内大部分文章主要的工作之一，下面介绍一篇 2011 年发表在 TEC 上的文章。</p>
+<p>这篇文章的作者来自于 National University of Ireland （爱尔兰国立大学戈尔韦）的 Bio-Inspired and Reconfigurable Computing 研究组。目前在 National University of Ireland 担任 Post-Doctoral Researcher，研究方向之一包括启发式算法，在这篇文章之前，曾在 GECCO 2008 发表过<strong> <a href="https://dl.acm.org/citation.cfm?doid=1389095.1389311" target="_blank" rel="external">Maintaining diversity through adaptive selection, crossover and mutation</a></strong>。</p>
+<p>文章提出了一种新方法（ACROMUSE），能够自适应调节交叉率、变异率和选择压三个参数之间的关系。在调节之前，方法引入了两种指标，Standard Population Diversity (SPD) 用来描述种群解空间的多样性，Healthy Population Diversity (HPD) 是从适应度的角度描述种群解空间的多样性。</p>
+<p>主张：</p>
+<p>本文提出的方法的核心目标不仅仅在于维持个体在种群解空间中的多样性，而且还要使得高适应度值的个体的多样性。</p>
+<p>文中有提到关于传统遗传算法容易陷入局部最优解的原因：</p>
+<p>在进化的中后期，几乎每次选中的优秀个体都是重复的，并且这些个体相似度很高，从而使得交叉后仍然得到相似的个体，变异（后期往往倾向于选择较小的变异率）也无法破坏当前稳定的状态。若是全局最优在局部最优边上，则通过上述方式有可能找到全局最优，但是事实上这种情况并不常见，特别是在复杂的实际问题中，因此种群有较大的概率陷入局部最优解中。</p>
+<h3 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h3><h4 id="计算-SPD"><a href="#计算-SPD" class="headerlink" title="计算 SPD"></a>计算 SPD</h4><p>记种群为 G，种群规模为 P，每个个体含有 N 位基因。$G_i$ ($G_1$ - $G_p$) 代表的是第 i 个个体，$G_i,n$ 代表的是第 i 个个体的第 n 个基因值。$G^{ave}$ 是指所有个体的所有基因位之和，$G^{ave}_n$ 是指种群中所有个体上 n 位上的基因的平均和，公式如下：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_01.png" alt="formu_01.png" title="">
+<p>$SPD_i$ 表示第i 个个体对种群多样性的贡献，可通过计算与 $G^{ave}$ 之间的欧式距离求出。</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_02.png" alt="formu_02.png" title="">
+<p>简单 $SPD_i$ 的求和一定程度上也可以用于描述 SPD，但是本文中没有使用，因为这样求得的结果 SPD 无法 $G^{ave}$ 根据归一化，导致不同问题求得的 SPD 值不具备可比性。为了克服这个问题，作者通过计算标准差来求得归一化的 SPD， 标准差 $\sigma(G^{ave}_n)$ 计算方式如下：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_03.png" alt="formu_03.png" title="">
+<p>因此，SPD 可由以下公式计算：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_04.png" alt="formu_04.png" title="">
+<h4 id="计算-HPD"><a href="#计算-HPD" class="headerlink" title="计算 HPD"></a>计算 HPD</h4><p>HPD 与 SPD 不同的地方在于前者同时加入了适应度值的衡量。 SPD 仅仅考虑解空间（solution space，注意区别 fitness landscape，fitness landscape 可以看成是 solution space 的映射），HPD 同时考虑了 solution space 和 fitness landscape。</p>
+<p>加权的平均基因值计算公式如下：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_05.png" alt="formu_05.png" title="">
+<p>$HPD_i$ 代表个体 i 对于种群健康度的贡献，因此当个体 i 的适应度值小或者靠近平均个体时，其 $HPD_i$ 的值都是较小的。计算公式如下：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_06.png" alt="formu_06.png" title="">
+<p>同样为了计算得到归一化后的 HPD值，需要先计算标准差：</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_07.png" alt="formu_07.png" title="">
+<p>最终，利用上述计算结果，可根据下式求出 HPD 的值；</p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_08.png" alt="formu_08.png" title="">
+<h3 id="如何使用-SPD-和-HPD"><a href="#如何使用-SPD-和-HPD" class="headerlink" title="如何使用 SPD 和 HPD"></a>如何使用 SPD 和 HPD</h3><img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_09.png" alt="formu_09.png" title="">
+<p><strong>自适应控制交叉率</strong></p>
+<ul>
+<li>Exploitation section（使用交叉和较小的变异率）</li>
+<li>Exploration section（自适应控制变异率） </li>
+</ul>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_10.png" alt="formu_10.png" title="">
+<p><strong>自适应控制变异率</strong></p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_11.png" alt="formu_11.png" title="">
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_12.png" alt="formu_12.png" title="">
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_13.png" alt="formu_13.png" title="">
+<p><strong>自适应控制选择</strong></p>
+<img src="/notes/2017/05/02/Maintaining-Healthy-Population-Diversity-using-Adaptive-Crossover-Mutation-and-Selection/formu_14.png" alt="formu_14.png" title="">
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>作者从以下六个方面总结了本篇文章的贡献：</p>
+<ol>
+<li>引入 HPD 指标，额外提供一种评估种群多样性的方式，此外还发现适应度空间变化后，HPD 成负相关变化，SPD 几乎无直接联系。</li>
+<li>利用 HPD 提出了自适应控制的选择算子，当 HPD 指标值较高时，增加 tourment size, 以增大选择压；相反，在指标值较小时，减小 tourment size 使得削弱选择压，增大基因/个体的多样性。</li>
+<li>在选中的 tourment size 个个体中，不是通过比较各自适应度值大小，选出最优个体，而是通过比较 HPD 指标（同时考虑适应度值和种群多样性）。</li>
+<li>自适应交叉算子，即在 exploration 中，变异操作探索算子，不采用交叉操作。在 exploitation 中，采用交叉操作以及较小的变异率（此时变异充当布局搜索作用）。当多样性指标 SPD 值较小时，增大 exploration 在种群中的比例；反之， SPD 较大时，增大 exploitation 在种群中的比例。</li>
+<li>通过结合自适应地交叉、变异和选择，提出了一种新的自适应遗传算法，旨在保持种群中健康个体的多样性，这样的种群十分适合处理环境动态变化的问题（更接近现实生活）。</li>
+<li></li>
+</ol>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>其它常用的 种群多样性衡量指标有：</p>
+<h3 id="待解决问题"><a href="#待解决问题" class="headerlink" title="待解决问题"></a>待解决问题</h3><p>$$\sum_{i=1}^PG_i,n$$</p>
+<p>$$G^{ave}_n = \frac{1}{P}$$</p>
+<p>上述公式无法连接成一行，因此上文中部分采用图片外链的方式。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如何保持遗传算法运行过程中 exploration and exploitation 的平衡是该领域内大部分文章主要的工作之一，下面介绍一篇 2011 年发表在 TEC 上的文章。&lt;/p&gt;
+&lt;p&gt;这篇文章的作者来自于 National University of Irela
+    
+    </summary>
+    
+    
+      <category term="TEC" scheme="http://kangfeihk.com/notes/tags/TEC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Genetic Algorithm</title>
+    <link href="http://kangfeihk.com/notes/2017/05/02/genetic-algorithm/"/>
+    <id>http://kangfeihk.com/notes/2017/05/02/genetic-algorithm/</id>
+    <published>2017-05-02T05:41:35.000Z</published>
+    <updated>2017-05-02T07:31:46.092Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="选择策略"><a href="#选择策略" class="headerlink" title="选择策略"></a>选择策略</h3><ul>
+<li>fitness-proportional (roulette wheel selection) <a href="https://mitpress.mit.edu/books/adaptation-natural-and-artificial-systems" target="_blank" rel="external">Holland 1975</a> </li>
+<li>tourment (A Comparative Analysis of Selection Schemes<br>used in Genetic Algorithms)</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;选择策略&quot;&gt;&lt;a href=&quot;#选择策略&quot; class=&quot;headerlink&quot; title=&quot;选择策略&quot;&gt;&lt;/a&gt;选择策略&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;fitness-proportional (roulette wheel selection) &lt;a href=
+    
+    </summary>
+    
+    
+      <category term="genetic algorithm" scheme="http://kangfeihk.com/notes/tags/genetic-algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Parameter Control</title>
+    <link href="http://kangfeihk.com/notes/2017/05/02/parameter-control/"/>
+    <id>http://kangfeihk.com/notes/2017/05/02/parameter-control/</id>
+    <published>2017-05-02T05:04:43.000Z</published>
+    <updated>2017-05-02T05:33:40.069Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="文献综述"><a href="#文献综述" class="headerlink" title="文献综述"></a>文献综述</h2><p>遗传算法参数控制相关的几篇综述型文章整理如下：</p>
+<ul>
+<li>2016 - <a href="https://dl.acm.org/citation.cfm?id=2996355" target="_blank" rel="external">A Systematic Literature Review of Adaptive Parameter Control Methods for Evolutionary Algorithms</a> - ACM Computing Surveys</li>
+<li>2015 - <a href="http://ieeexplore.ieee.org/abstract/document/6747993/" target="_blank" rel="external">Parameter Control in Evolutionary Algorithms: Trends and Challenges</a></li>
+<li>2008 - <a href="https://link.springer.com/chapter/10.1007%2F978-3-540-72960-0_8" target="_blank" rel="external">New Ways to Calibrate Evolutionary Algorithms</a> - In Advances in Metaheuristics for Hard Optimization.</li>
+<li>2007 - <a href="https://link.springer.com/chapter/10.1007%2F978-3-540-69432-8_2" target="_blank" rel="external">Parameter control in evolutionary algorithms</a> - In Parameter Setting in Evolutionary Algorithms</li>
+<li>1999 - <a href="http://ieeexplore.ieee.org/document/771166/" target="_blank" rel="external">Parameter control in evolutionary algorithms</a> - IEEE Transactions on Evolutionary Computation</li>
+<li>1997 - <a href="https://link.springer.com/article/10.1007/s005000050009" target="_blank" rel="external">Operator and parameter adaptation in genetic algorithms</a> - Soft Computing</li>
+<li>1995 - <a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.6.4594" target="_blank" rel="external">Adaptive and Self-adaptive Evolutionary Computations</a> - Computational Intelligence: A Dynamic Systems Perspective</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;文献综述&quot;&gt;&lt;a href=&quot;#文献综述&quot; class=&quot;headerlink&quot; title=&quot;文献综述&quot;&gt;&lt;/a&gt;文献综述&lt;/h2&gt;&lt;p&gt;遗传算法参数控制相关的几篇综述型文章整理如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2016 - &lt;a href=&quot;https://d
+    
+    </summary>
+    
+    
+      <category term="parameter control" scheme="http://kangfeihk.com/notes/tags/parameter-control/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Adaptive control strategy</title>
+    <link href="http://kangfeihk.com/notes/2017/05/02/adaptive-control-strategy/"/>
+    <id>http://kangfeihk.com/notes/2017/05/02/adaptive-control-strategy/</id>
+    <published>2017-05-02T02:43:50.000Z</published>
+    <updated>2017-05-04T06:36:03.488Z</updated>
+    
+    <content type="html"><![CDATA[<p>在自适应参数控制策略中，</p>
+<p>When using Adaptive control strategies, the change in algorithm properties is used as a guide to adjust parameter values in the following iterations</p>
+<p>adaptive GAs vary parameters<br>according to population statistics</p>
+<p> I think there some mainly different strategies:</p>
+<ul>
+<li>fitness diversity [94 AGA]</li>
+<li>genetic diversity [11 ]</li>
+<li>rank based、</li>
+</ul>
+<h3 id="Diversity-based-strategy"><a href="#Diversity-based-strategy" class="headerlink" title="Diversity-based strategy"></a>Diversity-based strategy</h3><p>A common hypothesis is that high diversity is important to avoid premature convergence and to escape local optima.</p>
+<ul>
+<li><p>2003 - A Diversity-controlling Adaptive Genetic Algorithm for the Vehicle Routing Problem with Time Windows - ICTAI</p>
+<p>The Hamming distance between genotypes u and v is defined as:</p>
+<script type="math/tex; mode=display">Ham(u,v) = \sum_{i=1}|sgn(u[i]-v[i])|</script><p>where u[i] and v[i] are the $i^{th}$ gene of u and v. And the Hamming based population diversity of population P is:</p>
+<script type="math/tex; mode=display">GD(P) = \frac{1}{2} \sum_{i \neq j}Ham(P[i],P[j])</script><p>where P[i] is the $i^{th}$ genotype in P.</p>
+</li>
+<li><p>2002 </p>
+</li>
+</ul>
+<p>An immediate measure for N-dimensional numerical problems is the “distance-to-average-point” measure defined as:</p>
+<script type="math/tex; mode=display">diversity(P) = \frac{1}{|L| \cdot |P|} \cdot \sum_{i=1}^{|P|} \sqrt{ \sum_{j=1}^{N} {(s_{ij}-\overline{s_j})}^2}</script><script type="math/tex; mode=display">\left[ \sqrt{\sum_{i = 1}^{n}{x^i}} \right]</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在自适应参数控制策略中，&lt;/p&gt;
+&lt;p&gt;When using Adaptive control strategies, the change in algorithm properties is used as a guide to adjust parameter val
+    
+    </summary>
+    
+    
+      <category term="Adaptive Control" scheme="http://kangfeihk.com/notes/tags/Adaptive-Control/"/>
+    
+      <category term="Parameter Control" scheme="http://kangfeihk.com/notes/tags/Parameter-Control/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-NexT 博客搭建小记</title>
+    <link href="http://kangfeihk.com/notes/2017/05/01/first-blog/"/>
+    <id>http://kangfeihk.com/notes/2017/05/01/first-blog/</id>
+    <published>2017-05-01T14:28:31.000Z</published>
+    <updated>2017-05-04T06:44:11.700Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hi，this is my another blog.  本博客主要记录一些算法，学术（特别是EC领域）相关资源，顺便记录一下短暂而珍贵的研究生生活。</p>
+<p>按照惯例，博文的第一篇一般都要记录下博客在安装过程中遇到的一些问题和解决方案，便于大家（自己）查阅。由于按照网络已有的教程已经能够方便地完成博客的搭建，因此下文主要已引述或引用为主，最后附参考来源。</p>
+<p>Hexo 是一个基于 Nodejs 快速简洁高效的博客框架，使用 Markdown 语法来编辑文章，优点是主题丰富（<a href="https://hexo.io/themes/" target="_blank" rel="external">查看列表</a>），搭建简单，使用方便。这里我们采用 NexT 主题，查看 <a href="http://notes.iissnan.com/" target="_blank" rel="external">Deno</a>，查看 <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">源码</a>。</p>
+<p><strong>安装环境：</strong> Windows 10 64位系统</p>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><h3 id="预备工作"><a href="#预备工作" class="headerlink" title="预备工作"></a>预备工作</h3><p>依次安装 Node.js 和 Git、Hexo</p>
+<ul>
+<li><p><strong>安装 Node.js</strong></p>
+<p>  进入 Node.js <a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">官网</a>下载相应安装包进行安装，添加Path环境变量，安装完成后进行验证</p>
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node -v</div><div class="line">npm -v</div></pre></td></tr></table></figure>
+<p>  返回版本信息则表示安装成功</p>
+</li>
+<li><p><strong>安装 Git </strong></p>
+<p>  同上，安装完成后同样进行验证</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="安装-Hexo-1"><a href="#安装-Hexo-1" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>若是已安装 Github for Windows，则打开 Git Shell，输入以下命令换源，否则安装 hexo 速度。。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure>
+<p>然后再输入以下两行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnpm install hexo-cli -g</div><div class="line">cnpm install hexo --save</div></pre></td></tr></table></figure>
+<p>安装完成后，在 GitHub 默认路径下新建一个 hexo 的文件夹，如 C:\Users\XXX\Documents\GitHub\hexo。</p>
+<p>在 Git Shell 中输入命令 cd hexo 切换到该文件夹下。再分别输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo init</div><div class="line">cnpm install</div></pre></td></tr></table></figure>
+<p>安装相关插件（复制以下命令，在Shell窗口里右键粘贴即可）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">cnpm install hexo-generator-index --save</div><div class="line">cnpm install hexo-generator-archive --save</div><div class="line">cnpm install hexo-generator-category --save</div><div class="line">cnpm install hexo-generator-tag --save</div><div class="line">cnpm install hexo-server --save</div><div class="line">cnpm install hexo-deployer-git --save</div><div class="line">cnpm install hexo-deployer-heroku --save</div><div class="line">cnpm install hexo-deployer-rsync --save</div><div class="line">cnpm install hexo-deployer-openshift --save</div><div class="line">cnpm install hexo-renderer-marked@0.2 --save</div><div class="line">cnpm install hexo-renderer-stylus@0.2 --save</div><div class="line">cnpm install hexo-generator-feed@1 --save</div><div class="line">cnpm install hexo-generator-sitemap@1 --save</div></pre></td></tr></table></figure>
+<p>安装完成后，输入以下命令后，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s -g</div></pre></td></tr></table></figure>
+<p>在浏览器中打开 localhost:4000 即可看到博客在本地的效果。在测试主题的一些效果的时候可以用这个命令在本地查看，等效果满意了再 deploy 到 GitHub。</p>
+<p><strong>设置主题 NexT</strong></p>
+<ul>
+<li>下载 <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">NexT 源码</a> 并解压至 \GitHub\hexo\themes\ 下</li>
+<li>在  _config 文件中修改 theme 为 next</li>
+</ul>
+<p><strong>设置 _config 文件</strong></p>
+<p>这里的配置文件包括 主题配置文件是指 hexo\themes\next 目录下的 _config.yml，而站点配置文件是指 hexo 目录下的 _config.yml，下面提一下 站点配置文件的几个关键设置设置，详细可<a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">参考</a>。</p>
+<p>关键：</p>
+<ul>
+<li>title（博客名称）</li>
+<li>subtitle（副标题）</li>
+<li>author（作者）</li>
+<li>language（博客语言）</li>
+<li>timezone（时区）</li>
+<li>url（博客地址）</li>
+<li>root（是否加二级域名）</li>
+<li>theme（博客主题）</li>
+<li>deploy-type（git）</li>
+<li>deploy-repository（博客 Git 地址）</li>
+</ul>
+<p>在 配置文件中中设置语言 <a href="https://github.com/iissnan/hexo-theme-next/wiki/%E8%AE%BE%E7%BD%AE%E8%AF%AD%E8%A8%80" target="_blank" rel="external">简体中文</a> 以及 时区 Asia/Shanghai，注意在编辑_config.yml文件，每个配置项后面必须有一个空格，否则会报 “YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 13, column 1:”</p>
+<p>主题配置可对作者头像，菜单显示项目等进行修改设置，具体参照<a href="http://theme-next.iissnan.com/theme-settings.html#tags-page" target="_blank" rel="external">官方教程</a>。</p>
+<p>这边提一下，categories 和 about 等页面的新建，除了将主题配置文件中的注释去掉以外，还需要输入以下命令行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo new page &quot;about&quot;</div><div class="line">hexo new page &quot;categories&quot;</div></pre></td></tr></table></figure></p>
+<p>命令输入完之后，会生成 categories 文件夹，里面会有 index.md 的文件，打开文件，修改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: categories</div><div class="line">date: 2016-04-06 17:21:47</div><div class="line">type: &quot;categories&quot;</div><div class="line">---</div></pre></td></tr></table></figure>
+<p>Tags 和 about 一样，在 type 处进行修改即可，<a href="https://github.com/iissnan/hexo-theme-next/issues/339" target="_blank" rel="external">详细在此</a>。</p>
+<p>关于 新建博客等常规操作见官方文档，国际化<a href="https://hexo.io/zh-cn/docs/internationalization.html" target="_blank" rel="external">参照</a></p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>接下来在Git Shell中输入以下命令，即可设置好身份信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;你的用户名&quot;</div><div class="line">git config --global user.email &quot;你的邮箱&quot;</div></pre></td></tr></table></figure></p>
+<p>最终，使用以下命令即可将生成的网页部署到Github上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy -g</div></pre></td></tr></table></figure>
+<p>通过 <a href="http://userName.github.io" target="_blank" rel="external">http://userName.github.io</a> 访问博客。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="关于资源存放及引用的问题"><a href="#关于资源存放及引用的问题" class="headerlink" title="关于资源存放及引用的问题"></a>关于资源存放及引用的问题</h3><p>关于图片类外部资源，可通过 图床（例如<a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a>）分享外链或者直接存入 Github 中。图片的正确引用方式，<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="external">参考此处</a>。视频的插入，<a href="https://samenyan.github.io/2016/03/19/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E3%80%81%E9%9F%B3%E4%B9%90%E3%80%81%E8%A7%86%E9%A2%91/" target="_blank" rel="external">参考此处</a></p>
+<h3 id="关于部署的问题"><a href="#关于部署的问题" class="headerlink" title="关于部署的问题"></a>关于部署的问题</h3><p>我们需要通过配置 SSH keys 将本地 git 项目与远程的 Github 项目建立联系。</p>
+<p>具体步骤如下：</p>
+<p>首先我们需要检查你电脑上现有的 ssh key：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd ~/.ssh 检查本机的ssh密钥</div></pre></td></tr></table></figure>
+<p>如果提示：No such file or directory 说明你是第一次使用 git。 <strong>或者还有一种情况，就是在同一台电脑上同时使用两个 github 账户，可参考<a href="https://www.cnblogs.com/xjnotxj/p/5845574.html" target="_blank" rel="external">博文</a>。</strong></p>
+<p>Generating a new SSH key and adding it to the ssh-agent <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="external">Github help</a></p>
+<ul>
+<li><p>生成 SSH key<br>进入 .ssh 文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd .ssh</div><div class="line">$ ssh-keygen -t rsa -C &quot;XXX@gmail.com&quot;</div></pre></td></tr></table></figure>
+<p>  在出现第一个对话框时输入 id_rsa_one，区分已有标识。</p>
+</li>
+<li><p>添加私钥<br>在 Git 中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-agent -s</div></pre></td></tr></table></figure>
+<p>  回到上级目录并添加私钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd</div><div class="line">$ ssh-add ~/.ssh/id_rsa_one</div></pre></td></tr></table></figure>
+<p>  添加成功后显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Identity added: /c/Users/XXX/.ssh/id_rsa_one (/c/Users/XXX/.ssh/id_rsa_one)</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置 public key<br>在 Github -&gt; setting -&gt; keys 中添加 new SSH key，<a href="https://github.com/settings/keys" target="_blank" rel="external">链接</a>，复制新生成的公钥 id_rsa_one.pub 中的内容至 SSH Key 中，title 随意。注意，SSH 须唯一，且不可重复。</p>
+</li>
+<li><p>测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置 gitconfig</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;用户名&quot;</div><div class="line">$ git config --global user.email 邮箱</div></pre></td></tr></table></figure>
+<p>  成功后显示 Hi XXX! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</li>
+<li><p>完成后可进行部署</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="https://help.github.com/articles/error-permission-denied-publickey/" target="_blank" rel="external">Permission denied (publickey) 错误原因</a></p>
+<h3 id="关于二级域名的问题"><a href="#关于二级域名的问题" class="headerlink" title="关于二级域名的问题"></a>关于二级域名的问题</h3><p>failed to load resource in hexo.js，由于引用资源路径错误，导致页面的 CSS 和 JS 资源无法正常加载，最终放弃了这个方案。 下面是几个相关问题</p>
+<ul>
+<li><a href="https://github.com/hexojs/hexo/issues/1121" target="_blank" rel="external">近似问题</a>，</li>
+<li><a href="https://my.oschina.net/lujianing/blog/178745" target="_blank" rel="external">Github Page创建个人主页以及绑定域名</a>，</li>
+<li><a href="https://haoshuai6.github.io/2016-11-25-www-host.html" target="_blank" rel="external">如何去掉WWW，使用顶级域名访问网站</a></li>
+</ul>
+<p>在站点配置文件中，Url 的设置处有这么一句注释，If your site is put in a subdirectory, set url as ‘<a href="http://yoursite.com/child" target="_blank" rel="external">http://yoursite.com/child</a>‘ and root as ‘/child/‘，因此可通过分级的方式在 Github 中建立多个博客网站。</p>
+<h3 id="关于-Latex-公式兼容的问题"><a href="#关于-Latex-公式兼容的问题" class="headerlink" title="关于 Latex 公式兼容的问题"></a>关于 Latex 公式兼容的问题</h3><p>虽然按照以上教程能够显示大部分公式，但是有部分代码组合在一起时，例如根号和求和公式的组合，会出现无法渲染的问题，最终参考以下博文实现公式的正常显示：</p>
+<p><a href="http://2wildkids.com/2016/10/06/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86Hexo%E5%92%8CMathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" target="_blank" rel="external">如何处理Hexo和MathJax的兼容问题</a></p>
+<p>修改默认的渲染插件，更改为 hexo-renderer-kramed：</p>
+<pre><code>npm uninstall hexo-renderer-marked --save
+npm install hexo-renderer-kramed --save
+</code></pre><h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo 官方文档</a></li>
+<li><a href="https://hujichn.github.io/2016/04/06/Win10%E4%B8%8A%E5%88%A9%E7%94%A8github+hexo%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%B9%E6%B3%95/" target="_blank" rel="external">Win10上利用github+hexo建立博客的方法</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hi，this is my another blog.  本博客主要记录一些算法，学术（特别是EC领域）相关资源，顺便记录一下短暂而珍贵的研究生生活。&lt;/p&gt;
+&lt;p&gt;按照惯例，博文的第一篇一般都要记录下博客在安装过程中遇到的一些问题和解决方案，便于大家（自己）查阅。由于按照
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
